@@ -1,0 +1,26 @@
+@media (max-width: 992px) {
+  .slick-dots {
+    list-style-type: none;
+    display: flex;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 10px;
+    padding-left: 0;
+    li {
+      margin: 0 5px;
+    }
+  }
+  .header__logo img {
+    width: 90%;
+  }
+
+  .promo {
+    &__header {
+      font-size: 34px;
+    }
+    &__subheader {
+      font-size: 20px;
+    }
+  }
+}
