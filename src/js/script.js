@@ -98,25 +98,42 @@ $(document).ready(function () {
   valideForms("#consultation form");
   valideForms("#order form");
 
-  $("input[name=phone]").mask("+7(999) 999-99-99");
+  $("input[name=phone]").mask("+7 (999) 999-99-99");
+
   $("form").submit(function (e) {
     e.preventDefault();
-
-    if (!$(this).valid()) {
-      return;
-    }
-    //если форма не прошла валидацию, отправки не будет
-
+    // if (!$(this).valid()) {
+    //   return;
+    // }
     $.ajax({
       type: "POST",
       url: "mailer/smart.php",
       data: $(this).serialize(),
     }).done(function () {
-      $(this).find("input").val(""); //очистка интпутов
+      $(this).find("input").val("");
       $("#consultation, #order").fadeOut();
       $(".overlay, #thanks").fadeIn("slow");
-      $("form").trigger("reset"); // обновление форм
+
+      $("form").trigger("reset");
     });
     return false;
   });
+
+  //Плавный скролл вверх
+  $(window).scroll(function () {
+    if ($(this).scrollTop() > 1200) {
+      //eсли пользователь проскроллить страницу более чем на 1200px
+      //у элемента + display: none;
+      $(".pageup").fadeIn();
+    } else {
+      $(".pageup").fadeOut();
+    }
+  });
+  $("a[href^='#up']").click(function () {
+    const _href = $(this).attr("href");
+    $("html, body").animate({ scrollTop: $(_href).offset().top + "px" });
+    return false;
+  });
+  // анимация
+  new WOW().init();
 });

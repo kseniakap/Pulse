@@ -16,6 +16,21 @@
       margin-bottom: 35px;
     }
   }
+  &__icon {
+    &_animated {
+      animation: heartbeat 1.5s ease infinite;
+      // animation-name: heartbeat;
+      // animation-duration: 1.5s;
+      // //время указывать обязательно
+      // animation-timing-function: ease;
+      // animation-iteration-count: infinite;
+      // //сколько раз срабатывает анимация
+      &:hover {
+        animation-play-state: paused;
+        // gпри наведении анимация останавливается
+      }
+    }
+  }
   &__subtitle {
     margin-bottom: 20px;
     font-weight: 700;
